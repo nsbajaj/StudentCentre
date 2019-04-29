@@ -1,0 +1,69 @@
+dl {
+  width: 100%;
+  overflow: hidden;
+  /* background: #ff0; */
+  padding: 0;
+  margin: 0;
+}
+dt {
+  float: left;
+  width: 30%;
+  /* background: #cc0; */
+  padding-right: 3%;
+  margin: 0;
+  text-align: right;
+}
+dd {
+  float: left;
+  width: 70%;
+  /* background: #dd0; */
+  padding: 0;
+  margin: 0;
+}
+
+div {
+  padding: 0.25em;
+  margin: 0.30em auto;
+  cursor: default;
+}
+
+.bgclr0 {
+  background-color: #7FFFFF;
+}
+
+.bgclr1 {
+  background-color: #FEE599;
+}
+
+.bgclr2 {
+  background-color: #F7CBAC;
+}
+
+.bgclr3 {
+  background-color: #ADB9CA;
+}
+
+.bgclr4 {
+  background-color: #FF7FB6;
+}
+
+.bgclr5 {
+  background-color: #A5FF7F;
+}
+
+.bgclr6 {
+  background-color: #D8D8D8;
+}
+
+.bgclr7 {
+  background-color: #FFE97F;
+}
+
+.bgclr8 {
+  background-color: #C5E0B3;
+}
+
+.bgclr9 {
+  background-color: #BDD7EE;
+}
+

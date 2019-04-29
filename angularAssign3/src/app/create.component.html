@@ -1,0 +1,75 @@
+<h4>Create - enter information, and click the create button</h4>
+<div class="row">
+  <div class='col-md-8 col-sm-12'>
+
+    <form (ngSubmit)='onSubmit()' #f='ngForm'>
+
+      <!-- Edit to make this an Angular template-driven form -->
+
+      <div class="form-group">
+        <label class="control-label" for="userName">User name:</label>
+        <input [(ngModel)]="credentials.userName" required minlength="6" maxlength="50" #userName="ngModel" autofocus class="form-control" id="userName" name="userName" type="email" [email]="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+        <!-- Validation error area -->
+        <div *ngIf='userName.invalid && (userName.dirty || userName.touched)' class='alert alert-danger'>
+          <!-- The code below is situation-dependent - think before coding -->
+          <div *ngIf='userName.errors?.required'>Name is required.</div>
+          <div *ngIf='userName.errors?.minlength'>Name must be at least 6 characters.</div>
+          <div *ngIf='userName.errors?.maxlength'>Name must be less than 50 characters.</div>
+          <div *ngIf='userName.errors?.email || userName.errors?.pattern'>Please enter a valid email address.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="fullName">Full name:</label>
+        <input [(ngModel)]="credentials.fullName" required minlength="6" maxlength="50" #fullName="ngModel" autofocus class="form-control" id="fullName" name="fullName" type="text">
+        <!-- Validation error area -->
+        <div *ngIf='fullName.invalid && (fullName.dirty || fullName.touched)' class='alert alert-danger'>
+          <!-- The code below is situation-dependent - think before coding -->
+          <div *ngIf='fullName.errors?.required'>Full Name is required.</div>
+          <div *ngIf='fullName.errors?.minlength'>Full Name must be at least 6 characters.</div>
+          <div *ngIf='fullName.errors?.maxlength'>Full Name must be less than 50 characters.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="password">Password:</label>
+        <input [(ngModel)]="credentials.password" required minlength="6" maxlength="50" #password="ngModel" type="password" class="form-control" id="password" name="password">
+        <!-- Validation error area -->
+        <div *ngIf='password.invalid && (password.dirty || password.touched)' class='alert alert-danger'>
+          <!-- The code below is situation-dependent - think before coding -->
+          <div *ngIf='password.errors?.required'>Password is required.</div>
+          <div *ngIf='password.errors?.minlength'>Password must be at least 6 characters.</div>
+          <div *ngIf='password.errors?.maxlength'>Password must be less than 50 characters.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label class="control-label" for="passwordConfirm">Confirm Password:</label>
+          <input [(ngModel)]="credentials.passwordConfirm" required #passwordConfirm="ngModel" type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" pattern="{{ password.value }}">
+          <!-- Validation error area -->
+          <div *ngIf='passwordConfirm.invalid && (passwordConfirm.dirty || passwordConfirm.touched)' class='alert alert-danger'>
+            <!-- The code below is situation-dependent - think before coding -->
+            <div *ngIf='passwordConfirm.errors?.required'>Confirm Password is required.</div>
+            <div *ngIf='passwordConfirm.errors?.pattern'>Password and Password Confirm do not match.</div>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="role">Role:</label>
+        <select required class="form-control" id="role" name="role" [(ngModel)]="credentials.role">
+          <option *ngFor="let r of tempRoles" [ngValue]="r">{{ r }}</option>
+        </select>
+      </div>
+      
+      <!-- <a class="btn btn-default" routerLink='/home'>Back to home</a> -->
+      <!-- <button class="btn btn-default" (click)='logout()'>Logout</button> -->
+      <button class="btn btn-primary" type="submit" [disabled]="!f.form.valid">Create</button>&nbsp;&nbsp;
+      <span *ngIf='createError.length>0' class="text-danger">{{ createError }}</span>
+    </form>
+
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

@@ -1,0 +1,56 @@
+
+<div className="row">
+    <div class="col-md-7">
+        <h3>Select courses - {{ student.givenName + " " + student.familyName + ", " + student.studentId }} <a href="/students/{{ student._id }}"><button type="button" class="btn btn-default">Back to detail</button></a></h3>
+    </div>
+    <div class="col-md-5">
+        <span>Select courses, then save, or confirm your selections</span>
+        <div class="btn-space">
+            <button type="button" class="btn btn-default" (click)='taskClear()' [disabled]="!coursesSelected.length">Clear</button>
+            <button type="button" class="btn btn-primary" (click)='taskSaveCart()' [disabled]="!coursesSelected.length">Save for later</button>
+            <button type="button" class="btn btn-primary" (click)='taskConfirmTimetable()'>Confirm as your timetable</button>
+            <span [innerHTML]='message'></span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-7">
+        <h4>Possible courses, next term</h4>
+        <div id="sd" class="tableScroll">
+            <table class="table-striped table-condensed">
+                <thead>
+                    <th>Course</th>
+                    <th>Day and times</th>
+                    <th>Enrolled</th>
+                    <th>Professor</th>
+                    <th>Add/Remove</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of coursesMatched" class="tableBorder">
+                        <td>{{ c.courseCode }} - {{ c.section }}<br>({{ c.termSectionId }})</td>
+                        <td>
+                            <span *ngIf="c.classMon == 'Y'">Monday</span>
+                            <span *ngIf="c.classTue == 'Y'">Tuesday</span>
+                            <span *ngIf="c.classWed == 'Y'">Wednesday</span>
+                            <span *ngIf="c.classThu == 'Y'">Thursday</span>
+                            <span *ngIf="c.classFri == 'Y'">Friday</span>
+                            <br>
+                            <span>{{ c.classStart }}</span>
+                            <span>{{ c.classEnd }}</span>
+                        </td>
+                        <td>{{ c.enrolTotal }}</td>
+                        <td>{{ c.professor }}</td>
+                        <button [ngClass]="['btn', isCourseSelected(c) ? 'btn-danger' : 'btn-success']" (click)="courseSelect(c)">+ / -</button>
+                        <br>
+                        <span class="small text-danger">{{ isCourseSelected(c) ? "(selected)" : '' }}</span>
+                    </tr>
+                </tbody>                
+            </table>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <h4>Selected courses</h4>
+        <app-cart-selected-grid [coursesSelected]="coursesSelected"></app-cart-selected-grid>
+        <app-cart-selected-list [coursesSelected]="coursesSelected"></app-cart-selected-list>
+    </div>
+</div>

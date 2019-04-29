@@ -1,0 +1,35 @@
+dl {
+  width: 100%;
+  overflow: hidden;
+  /* background: #ff0; */
+  padding: 0;
+  margin: 0;
+}
+dt {
+  float: left;
+  width: 30%;
+  /* background: #cc0; */
+  padding-right: 3%;
+  margin: 0;
+  text-align: right;
+}
+dd {
+  float: left;
+  width: 70%;
+  /* background: #dd0; */
+  padding: 0;
+  margin: 0;
+}
+
+button{
+  margin-right: 10px;
+}
+
+.tableBorder{
+  border-bottom: 1px solid lightgray;
+}
+
+.tableScroll{
+  height: 60vh;
+  overflow-y: auto;
+}
